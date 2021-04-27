@@ -23,9 +23,9 @@ Could have:
 
 Plan:
 - [x] First commit
-- [] Create boilerplate code
-- [] Create layout for the app
-- [] Connect app to Firebase
+- [x] Create boilerplate code
+- [x] Create layout for the app
+- [x] Connect app to Firebase
 - [] Implement login through Firebase
 - [] Implement search user feature
 - [] Fetch repo data for searched user
