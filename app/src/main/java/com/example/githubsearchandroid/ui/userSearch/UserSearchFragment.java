@@ -13,12 +13,12 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.githubsearchandroid.R;
 
 public class UserSearchFragment extends Fragment {
-    private UserSearchViewModel viewModel;
+    private UserSearchViewmodel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(this).get(UserSearchViewModel.class);
+        viewModel = new ViewModelProvider(this).get(UserSearchViewmodel.class);
         View root = inflater.inflate(R.layout.fragment_user_search, container, false);
         return root;
     }
