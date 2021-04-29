@@ -26,7 +26,7 @@ Plan:
 - [x] Create boilerplate code
 - [x] Create layout for the app
 - [x] Connect app to Firebase
-- [] Implement login through Firebase
+- [x] Implement login through Firebase
 - [] Implement search user feature
 - [] Fetch repo data for searched user
 - [] Display fetched data

@@ -9,17 +9,31 @@
         android:id="@+id/navigation_home"
         android:name="com.example.githubsearchandroid.ui.userSearch.UserSearchFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_user_search"/>
+        tools:layout="@layout/fragment_user_search">
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_userInfo"
+            app:destination="@id/navigation_userInfo"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_userInfo"
         android:name="com.example.githubsearchandroid.ui.userInfo.UserInfoFragment"
         android:label="@string/title_userInfo"
-        tools:layout="@layout/fragment_user_info"/>
+        tools:layout="@layout/fragment_user_info" />
 
     <fragment
         android:id="@+id/navigation_favourite"
         android:name="com.example.githubsearchandroid.ui.favourite.FavouriteFragment"
         android:label="@string/title_favourite"
         tools:layout="@layout/fragment_favourite"/>
+
+    <fragment
+        android:id="@+id/toolbar_settings"
+        android:name="com.example.githubsearchandroid.ui.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

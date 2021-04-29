@@ -1,28 +1,79 @@
 package com.example.githubsearchandroid;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
-import com.example.githubsearchandroid.R;
+import com.example.githubsearchandroid.ui.login.LoginActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+    private MainActivityViewmodel viewmodel;
+    private NavController navController;
+    AppBarConfiguration appBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        viewmodel = new ViewModelProvider(this).get(MainActivityViewmodel.class);
+        //observer the currently logged in user
+        viewmodel.getCurrentUser().observe(this, user -> {
+            if (user != null) {
+                Toast.makeText(this, "Hello " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
+            } else {
+                startActivity(new Intent(this, LoginActivity.class));
+                finish();
+            }
+        });
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_userInfo, R.id.navigation_favourite)
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        //bottom navigation setup
+        appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.navigation_home, R.id.navigation_favourite)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        //toolbar setup
+        setSupportActionBar(toolbar);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+
+        if (itemId == R.id.toolbar_settings) {
+            return NavigationUI.onNavDestinationSelected(item, navController) || super.onOptionsItemSelected(item);
+        } else if (itemId == R.id.toolbar_signOut) {
+            viewmodel.signOut();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

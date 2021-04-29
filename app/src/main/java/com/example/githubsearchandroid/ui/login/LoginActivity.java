@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent loginIntent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
-                .setLogo(R.drawable.common_google_signin_btn_icon_dark)
+                .setLogo(R.drawable.ic_favourite)
                 .build();
 
         startActivityForResult(loginIntent, 42);
