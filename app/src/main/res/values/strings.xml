@@ -1,10 +1,16 @@
 <resources>
     <string name="app_name">Github Search</string>
+    bottom navigation menu
     <string name="title_home">Home</string>
     <string name="title_userInfo">User Information</string>
     <string name="title_favourite">Favourite</string>
     <string name="title_settings">Settings</string>
+    login fragment
     <string name="login_login">Log in</string>
+    toolbar menu
     <string name="toolbar_settings">Setting</string>
     <string name="toolbar_signOut">Sign out</string>
+    user search fragment
+    <string name="user_search_search">Search User</string>
+    <string name="user_search_hint">Username</string>
 </resources>

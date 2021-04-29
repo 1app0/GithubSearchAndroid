@@ -13,12 +13,12 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.githubsearchandroid.R;
 
 public class FavouriteFragment extends Fragment {
-    private FavouriteViewmodel viewModel;
+    private FavouriteViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(this).get(FavouriteViewmodel.class);
+        viewModel = new ViewModelProvider(this).get(FavouriteViewModel.class);
         View root = inflater.inflate(R.layout.fragment_favourite, container, false);
         return root;
     }

@@ -13,14 +13,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.githubsearchandroid.ui.login.LoginActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private MainActivityViewmodel viewmodel;
+    private MainActivityViewModel viewModel;
     private NavController navController;
     AppBarConfiguration appBarConfiguration;
 
@@ -29,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewmodel = new ViewModelProvider(this).get(MainActivityViewmodel.class);
-        //observer the currently logged in user
-        viewmodel.getCurrentUser().observe(this, user -> {
+        viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+        //observe the currently logged in user
+        viewModel.getCurrentUser().observe(this, user -> {
             if (user != null) {
                 Toast.makeText(this, "Hello " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
             } else {
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         if (itemId == R.id.toolbar_settings) {
             return NavigationUI.onNavDestinationSelected(item, navController) || super.onOptionsItemSelected(item);
         } else if (itemId == R.id.toolbar_signOut) {
-            viewmodel.signOut();
+            viewModel.signOut();
         }
 
         return super.onOptionsItemSelected(item);

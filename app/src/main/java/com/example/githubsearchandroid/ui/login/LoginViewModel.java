@@ -8,10 +8,10 @@ import androidx.lifecycle.LiveData;
 import com.example.githubsearchandroid.data.UserRep;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginViewmodel extends AndroidViewModel {
+public class LoginViewModel extends AndroidViewModel {
     private final UserRep userRep;
 
-    public LoginViewmodel(Application app) {
+    public LoginViewModel(Application app) {
         super(app);
         userRep = UserRep.getInstance(app);
     }
