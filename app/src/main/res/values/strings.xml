@@ -13,4 +13,7 @@
     user search fragment
     <string name="user_search_search">Search User</string>
     <string name="user_search_hint">Username</string>
+    tabs
+    <string name="tab_title_1">Languages</string>
+    <string name="tab_title_2">Starred</string>
 </resources>

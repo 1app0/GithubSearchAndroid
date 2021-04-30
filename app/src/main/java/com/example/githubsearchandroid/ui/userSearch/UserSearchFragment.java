@@ -41,6 +41,8 @@ public class UserSearchFragment extends Fragment {
 
             NavDirections action = UserSearchFragmentDirections.actionNavigationHomeToNavigationUserInfo();
             Navigation.findNavController(v).navigate(action);
+
+            searchField.setText("");
         });
 
         return root;

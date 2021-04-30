@@ -1,4 +1,4 @@
-package com.example.githubsearchandroid.data;
+package com.example.githubsearchandroid.data.logindata;
 
 import androidx.lifecycle.LiveData;
 

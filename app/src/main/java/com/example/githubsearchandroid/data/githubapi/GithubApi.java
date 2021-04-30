@@ -1,5 +1,8 @@
 package com.example.githubsearchandroid.data.githubapi;
 
+import com.example.githubsearchandroid.data.githubapi.githubresponse.GithubResponseRepos;
+import com.example.githubsearchandroid.data.githubapi.githubresponse.GithubResponseUser;
+
 import java.util.List;
 
 import retrofit2.Call;

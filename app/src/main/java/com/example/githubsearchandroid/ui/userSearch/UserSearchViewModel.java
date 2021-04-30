@@ -1,12 +1,10 @@
 package com.example.githubsearchandroid.ui.userSearch;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.githubsearchandroid.data.GithubRepository;
-import com.example.githubsearchandroid.data.githubapi.GithubUser;
+import com.example.githubsearchandroid.data.githubapi.githubdata.GithubUser;
 
 public class UserSearchViewModel extends ViewModel {
     private GithubRepository repo;
