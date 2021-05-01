@@ -9,10 +9,10 @@ import com.example.githubsearchandroid.data.githubapi.githubdata.GithubUser;
 
 import java.util.List;
 
-public class UserInfoViewModel extends ViewModel {
+public class UserViewModel extends ViewModel {
     private GithubRepository repo;
 
-    public UserInfoViewModel() {
+    public UserViewModel() {
         repo = GithubRepository.getInstance();
     }
 

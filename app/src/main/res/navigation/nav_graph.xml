@@ -21,9 +21,9 @@
 
     <fragment
         android:id="@+id/navigation_userInfo"
-        android:name="com.example.githubsearchandroid.ui.userInfo.UserInfoFragment"
+        android:name="com.example.githubsearchandroid.ui.userInfo.UserFragment"
         android:label="@string/title_userInfo"
-        tools:layout="@layout/fragment_user_info" />
+        tools:layout="@layout/fragment_user" />
 
     <fragment
         android:id="@+id/navigation_favourite"

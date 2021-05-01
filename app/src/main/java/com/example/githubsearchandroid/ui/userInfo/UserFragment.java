@@ -1,8 +1,6 @@
 package com.example.githubsearchandroid.ui.userInfo;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,39 +11,35 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
-import com.bumptech.glide.Glide;
 import com.example.githubsearchandroid.R;
 import com.example.githubsearchandroid.data.githubapi.githubdata.GithubRepo;
-import com.example.githubsearchandroid.ui.userInfo.tabs.SectionsPagerAdapter;
+import com.example.githubsearchandroid.ui.userInfo.tabs.ViewAdapter;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserInfoFragment extends Fragment {
-    private UserInfoViewModel viewModel;
+public class UserFragment extends Fragment {
+    private UserViewModel viewModel;
     private TextView textView;
     private ImageView imgView;
     private PieChart pieChart;
 
+    private ViewAdapter adapter;
+    private ViewPager2 viewPager2;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(this).get(UserInfoViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_user_info, container, false);
-        //tabs setup
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getContext(), getChildFragmentManager());
-        ViewPager viewPager = root.findViewById(R.id.view_pager);
-        viewPager.setAdapter(sectionsPagerAdapter);
-        TabLayout tabs = root.findViewById(R.id.tabs);
-        tabs.setupWithViewPager(viewPager);
+        viewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_user, container, false);
 
         /*textView = root.findViewById(R.id.githubUserName);
         imgView = root.findViewById(R.id.githubUserAvatar);
@@ -59,9 +53,39 @@ public class UserInfoFragment extends Fragment {
             }
         });
 
-        viewModel.getSearchedRepos().observe(getViewLifecycleOwner(), this::setUpPieChart);
+        //viewModel.getSearchedRepos().observe(getViewLifecycleOwner(), this::setUpPieChart);
 
         return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        adapter = new ViewAdapter(this);
+        viewPager2 = view.findViewById(R.id.view_pager);
+        viewPager2.setAdapter(adapter);
+
+        TabLayout tabLayout = view.findViewById(R.id.tab_layout);
+        new TabLayoutMediator(tabLayout, viewPager2,
+                (tab, position) -> {
+            switch (position) {
+                case 0:
+                    tab.setText(R.string.tab_title_user);
+                    break;
+                case 1:
+                    tab.setText(R.string.tab_title_language);
+                    break;
+                case 2:
+                    tab.setText(R.string.tab_title_hype);
+                    break;
+                case 3:
+                    tab.setText(R.string.tab_title_stars);
+                    break;
+                case 4:
+                    tab.setText(R.string.tab_title_forks);
+                    break;
+            }
+                }
+        ).attach();
     }
 
     public void setUpPieChart(List<GithubRepo> githubRepos) {

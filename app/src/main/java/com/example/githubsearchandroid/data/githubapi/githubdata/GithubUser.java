@@ -4,54 +4,52 @@ public class GithubUser {
     private String name;
     private String bio;
     private int numberOfRepos;
+    private int numberOfFollowers;
     private String login;
     private String avatar_url;
+    private int following;
+    private String twitter_username;
 
-    public GithubUser(String login, String name, String bio, int numberOfRepos, String avatar_url) {
+    public GithubUser(String login, String name, String bio, int numberOfRepos, int numberOfFollowers, String avatar_url, int following, String twitter_username) {
         this.login = login;
         this.name = name;
         this.bio = bio;
         this.numberOfRepos = numberOfRepos;
         this.avatar_url = avatar_url;
+        this.numberOfFollowers = numberOfFollowers;
+        this.following = following;
+        this.twitter_username = twitter_username;
     }
 
-    public String getAvatar_url() {
-        return avatar_url;
-    }
-
-    public void setAvatar_url(String avatar_url) {
-        this.avatar_url = avatar_url;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public String getTwitter_username() {
+        return twitter_username;
     }
 
     public String getBio() {
         return bio;
     }
 
-    public void setBio(String bio) {
-        this.bio = bio;
+    public int getFollowing() {
+        return following;
+    }
+
+    public int getNumberOfFollowers() {
+        return numberOfFollowers;
+    }
+
+    public String getAvatar_url() {
+        return avatar_url;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getNumberOfRepos() {
         return numberOfRepos;
-    }
-
-    public void setNumberOfRepos(int numberOfRepos) {
-        this.numberOfRepos = numberOfRepos;
     }
 }

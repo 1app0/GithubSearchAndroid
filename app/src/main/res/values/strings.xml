@@ -13,7 +13,18 @@
     user search fragment
     <string name="user_search_search">Search User</string>
     <string name="user_search_hint">Username</string>
-    tabs
-    <string name="tab_title_1">Languages</string>
-    <string name="tab_title_2">Starred</string>
+    tabs names
+    <string name="tab_title_user">User</string>
+    <string name="tab_title_language">Language</string>
+    <string name="tab_title_hype">Hype</string>
+    <string name="tab_title_stars">Stars</string>
+    <string name="tab_title_forks">Forks</string>
+    user info
+    <string name="tab_user_info_welcome">Welcome</string>
+    <string name="tab_user_info_user_avatarImg">User Avatar</string>
+    <string name="tab_user_info_user_number_of_reposImg">Number of repos</string>
+    <string name="tab_user_info_user_number_of_followersImg">Number of followers</string>
+    <string name="tab_user_info_user_followingImg">Following number</string>
+    user contact
+    <string name="tab_user_contactImg">User Avatar</string>
 </resources>
