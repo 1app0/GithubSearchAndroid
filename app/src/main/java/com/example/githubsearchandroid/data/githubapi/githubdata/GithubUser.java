@@ -9,8 +9,12 @@ public class GithubUser {
     private String avatar_url;
     private int following;
     private String twitter_username;
+    private String company;
+    private String location;
+    private String blog;
 
-    public GithubUser(String login, String name, String bio, int numberOfRepos, int numberOfFollowers, String avatar_url, int following, String twitter_username) {
+    public GithubUser(String login, String name, String bio, int numberOfRepos, int numberOfFollowers, String avatar_url,
+                      int following, String twitter_username, String company, String location, String blog) {
         this.login = login;
         this.name = name;
         this.bio = bio;
@@ -19,6 +23,21 @@ public class GithubUser {
         this.numberOfFollowers = numberOfFollowers;
         this.following = following;
         this.twitter_username = twitter_username;
+        this.company = company;
+        this.location = location;
+        this.blog = blog;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getBlog() {
+        return blog;
     }
 
     public String getTwitter_username() {

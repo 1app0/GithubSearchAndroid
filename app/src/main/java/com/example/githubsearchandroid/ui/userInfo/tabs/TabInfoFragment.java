@@ -1,4 +1,4 @@
-package com.example.githubsearchandroid.ui.userInfo.tabs;
+    package com.example.githubsearchandroid.ui.userInfo.tabs;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

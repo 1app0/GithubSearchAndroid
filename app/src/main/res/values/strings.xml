@@ -27,4 +27,7 @@
     <string name="tab_user_info_user_followingImg">Following number</string>
     user contact
     <string name="tab_user_contactImg">User Avatar</string>
+    <string name="tab_user_contact_blogImg">User blog</string>
+    <string name="tab_user_contact_locationImg">User location</string>
+    <string name="tab_user_contact_companyImg">User company</string>
 </resources>

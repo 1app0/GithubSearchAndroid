@@ -20,7 +20,11 @@ public class TabContactFragment extends Fragment {
     private UserViewModel viewModel;
     private TextView usernameTextView;
     private TextView twitterUsernameTextView;
+    private TextView userBio;
     private ImageView avatarImageView;
+    private TextView userCompany;
+    private TextView userLocation;
+    private TextView userBlog;
 
     @Nullable
     @Override
@@ -31,11 +35,19 @@ public class TabContactFragment extends Fragment {
         usernameTextView = root.findViewById(R.id.userContact_usernameTextView);
         twitterUsernameTextView = root.findViewById(R.id.userContact_twitterTextView);
         avatarImageView = root.findViewById(R.id.userContact_avatarImg);
+        userBio = root.findViewById(R.id.userContact_bioTextView);
+        userCompany = root.findViewById(R.id.userContact_userCompanyTextView);
+        userLocation = root.findViewById(R.id.userContact_userLocationTextView);
+        userBlog = root.findViewById(R.id.userContact_userBlogTextView);
 
         viewModel.getSearchedUser().observe(getViewLifecycleOwner(), user -> {
             usernameTextView.setText(user.getName());
             Glide.with(this).load(user.getAvatar_url()).into(avatarImageView);
             twitterUsernameTextView.setText(user.getTwitter_username() != null ? "@" + user.getTwitter_username() : "@Someone");
+            userBio.setText(user.getBio());
+            userCompany.setText(user.getCompany() != null ? user.getCompany() : "No company provided");
+            userLocation.setText(user.getLocation() != null ? user.getLocation() : "No location provided");
+            userBlog.setText(!user.getBlog().equals("") ? user.getBlog() : "No blog provided");
         });
 
         return root;

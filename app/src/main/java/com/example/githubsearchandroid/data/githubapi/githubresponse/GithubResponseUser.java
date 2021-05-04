@@ -11,8 +11,12 @@ public class GithubResponseUser {
     private String avatar_url;
     private int following;
     private String twitter_username;
+    private String company;
+    private String location;
+    private String blog;
 
     public GithubUser getGithubUser() {
-        return new GithubUser(login, name, bio, public_repos, followers, avatar_url, following, twitter_username);
+        return new GithubUser(login, name, bio, public_repos, followers, avatar_url, following,
+                twitter_username, company, location, blog);
     }
 }

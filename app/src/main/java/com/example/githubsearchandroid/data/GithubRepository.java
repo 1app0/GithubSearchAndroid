@@ -47,6 +47,10 @@ public class GithubRepository {
         return searchedRepos;
     }
 
+    public List<GithubRepo> getGithubReposList() {
+        return githubReposList;
+    }
+
     public void searchForRepos(String username) {
         GithubApi githubApi = ServiceGenerator.getGithubApi();
         Call<List<GithubResponseRepos>> call = githubApi.getReposForUser(username);

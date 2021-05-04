@@ -11,9 +11,11 @@ import java.util.List;
 
 public class UserViewModel extends ViewModel {
     private GithubRepository repo;
+    private List<GithubRepo> githubRepos;
 
     public UserViewModel() {
         repo = GithubRepository.getInstance();
+        githubRepos = repo.getGithubReposList();
     }
 
     public LiveData<GithubUser> getSearchedUser() {
