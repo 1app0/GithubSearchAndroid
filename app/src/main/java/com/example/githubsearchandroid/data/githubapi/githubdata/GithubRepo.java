@@ -1,6 +1,6 @@
 package com.example.githubsearchandroid.data.githubapi.githubdata;
 
-public class GithubRepo {
+public class GithubRepo implements Comparable<GithubRepo> {
     private String name;
     private int stargazers_count;
     private int watchers_count;
@@ -37,5 +37,10 @@ public class GithubRepo {
 
     public int getForks_count() {
         return forks_count;
+    }
+
+    @Override
+    public int compareTo(GithubRepo o) {
+        return o.getStargazers_count() - stargazers_count;
     }
 }

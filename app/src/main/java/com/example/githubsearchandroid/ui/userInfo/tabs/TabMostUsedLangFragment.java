@@ -30,7 +30,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MostUsedLanguagesFragment extends Fragment {
+public class TabMostUsedLangFragment extends Fragment {
     private PieChart pieChart;
     private UserViewModel viewModel;
 
@@ -39,7 +39,7 @@ public class MostUsedLanguagesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_piechart, container, false);
 
-        pieChart = root.findViewById(R.id.languages_piechart);
+        pieChart = root.findViewById(R.id.tab_user_languages_piechart);
         viewModel = new ViewModelProvider(this).get(UserViewModel.class);
         Log.i("heello", "hi");
         viewModel.getSearchedRepos().observe(getViewLifecycleOwner(), this::setupPieChart);
@@ -81,8 +81,6 @@ public class MostUsedLanguagesFragment extends Fragment {
         pieChart.getDescription().setEnabled(false);
         pieChart.setExtraOffsets(5, 10, 5, 5);
         pieChart.setDrawHoleEnabled(false);
-        pieChart.setHoleColor(Color.WHITE);
-        pieChart.setTransparentCircleRadius(61f);
         pieChart.animateY(1000, Easing.EaseInOutCubic);
 
         dataSet.setSliceSpace(3f);
@@ -91,7 +89,7 @@ public class MostUsedLanguagesFragment extends Fragment {
 
         data.setValueFormatter(new PercentFormatter(pieChart));
         data.setValueTextSize(15f);
-        data.setValueTextColor(Color.WHITE);
+        data.setValueTextColor(Color.BLUE);
 
         Description description = new Description();
         description.setText("User's most used languages");

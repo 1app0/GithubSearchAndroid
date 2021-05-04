@@ -16,7 +16,9 @@ public class ViewAdapter extends FragmentStateAdapter {
         if (position == 1) {
             return new TabContactFragment();
         } else if (position == 2) {
-            return new MostUsedLanguagesFragment();
+            return new TabMostUsedLangFragment();
+        } else if (position == 3) {
+            return new TabMostPopularFragment();
         }
         return new TabInfoFragment();
     }

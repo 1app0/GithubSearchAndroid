@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/languages_piechart"
+        android:id="@+id/tab_user_languages_piechart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
