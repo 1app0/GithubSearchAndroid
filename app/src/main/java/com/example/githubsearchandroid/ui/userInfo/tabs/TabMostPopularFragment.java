@@ -1,4 +1,4 @@
-package com.example.githubsearchandroid.ui.userInfo.tabs;
+ package com.example.githubsearchandroid.ui.userInfo.tabs;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -76,26 +76,38 @@ public class TabMostPopularFragment extends Fragment {
 
         int barXAxis = 1;
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            Log.i("xkey", entry.getKey());
             xAxisLabel.add(entry.getKey());
             barEntries.add(new BarEntry(barXAxis, entry.getValue()));
             barXAxis++;
         }
 
-        BarDataSet barDataSet = new BarDataSet(barEntries, "User top 3 most popular repos");
+        BarDataSet barDataSet = new BarDataSet(barEntries, "User's top 3 most popular repos");
 
         BarData barData = new BarData(barDataSet);
 
         XAxis xAxis = barChart.getXAxis();
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(xAxisLabel));
+        xAxis.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return xAxisLabel.get((int) value - 1);
+            }
+        });
+        xAxis.setGranularity(1);
 
         barChart.setDrawBarShadow(false);
         barChart.setDrawValueAboveBar(true);
         barChart.setMaxVisibleValueCount(50);
-        barChart.setPinchZoom(false);
+        barChart.setScaleEnabled(false);
         barChart.setDrawGridBackground(false);
         barChart.getXAxis().setDrawGridLines(false);
         barChart.getAxisLeft().setDrawGridLines(false);
         barChart.getAxisRight().setDrawGridLines(false);
+        barChart.getAxisLeft().setDrawAxisLine(false);
+        barChart.getAxisRight().setDrawAxisLine(false);
+        barChart.getAxisLeft().setEnabled(false);
+        barChart.getAxisRight().setEnabled(false);
+        barChart.getDescription().setText("Stars per repo");
 
         barDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
 

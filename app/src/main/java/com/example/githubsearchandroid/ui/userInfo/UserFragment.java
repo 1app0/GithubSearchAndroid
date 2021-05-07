@@ -43,21 +43,6 @@ public class UserFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(UserViewModel.class);
         View root = inflater.inflate(R.layout.fragment_user, container, false);
-
-        /*textView = root.findViewById(R.id.githubUserName);
-        imgView = root.findViewById(R.id.githubUserAvatar);
-        pieChart = root.findViewById(R.id.pieChart);*/
-
-        viewModel.getSearchedUser().observe(getViewLifecycleOwner(), user -> {
-            if (user != null) {
-                /*textView.setText(user.getName());
-                Glide.with(this).load(user.getAvatar_url()).into(imgView);
-                viewModel.searchRepos(user.getLogin());*/
-            }
-        });
-
-        //viewModel.getSearchedRepos().observe(getViewLifecycleOwner(), this::setUpPieChart);
-
         return root;
     }
 
@@ -82,9 +67,6 @@ public class UserFragment extends Fragment {
                     break;
                 case 3:
                     tab.setText(R.string.tab_title_stars);
-                    break;
-                case 4:
-                    tab.setText(R.string.tab_title_forks);
                     break;
             }
                 }

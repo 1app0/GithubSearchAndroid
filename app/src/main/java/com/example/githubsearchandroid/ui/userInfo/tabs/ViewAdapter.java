@@ -13,18 +13,21 @@ public class ViewAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        if (position == 1) {
-            return new TabContactFragment();
-        } else if (position == 2) {
-            return new TabMostUsedLangFragment();
-        } else if (position == 3) {
-            return new TabMostPopularFragment();
+        switch(position) {
+            case 0:
+                return new TabInfoFragment();
+            case 1:
+                return new TabContactFragment();
+            case 2:
+                return new TabMostUsedLangFragment();
+            case 3:
+                return new TabMostPopularFragment();
         }
-        return new TabInfoFragment();
+        return null;
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 4;
     }
 }
