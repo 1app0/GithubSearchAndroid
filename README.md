@@ -27,8 +27,8 @@ Plan:
 - [x] Create layout for the app
 - [x] Connect app to Firebase
 - [x] Implement login through Firebase
-- [] Implement search user feature
-- [] Fetch repo data for searched user
-- [] Display fetched data
+- [x] Implement search user feature
+- [x] Fetch repo data for searched user
+- [x] Display fetched data
 - [] Implement favourite user through Firebase remote db
 - [] Implement settings page
