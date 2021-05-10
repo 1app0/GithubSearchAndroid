@@ -121,6 +121,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView3"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_margin="15dp"
@@ -139,11 +140,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:contentDescription="@string/tab_user_info_user_followingImg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_repos_following"
-                android:contentDescription="@string/tab_user_info_user_followingImg" />
+                app:srcCompat="@drawable/ic_repos_following" />
 
             <TextView
                 android:id="@+id/number_of_following_textView"
@@ -157,6 +158,16 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
+    <Button
+        android:id="@+id/switchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/tab_user_info_favorite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

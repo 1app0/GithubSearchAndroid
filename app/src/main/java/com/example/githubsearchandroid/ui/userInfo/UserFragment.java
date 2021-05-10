@@ -30,18 +30,12 @@ import java.util.List;
 import java.util.Map;
 
 public class UserFragment extends Fragment {
-    private UserViewModel viewModel;
-    private TextView textView;
-    private ImageView imgView;
-    private PieChart pieChart;
-
     private ViewAdapter adapter;
     private ViewPager2 viewPager2;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(this).get(UserViewModel.class);
         View root = inflater.inflate(R.layout.fragment_user, container, false);
         return root;
     }

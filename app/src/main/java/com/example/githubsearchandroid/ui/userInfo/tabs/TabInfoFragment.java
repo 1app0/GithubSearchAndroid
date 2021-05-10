@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +25,9 @@ public class TabInfoFragment extends Fragment {
     private TextView nrRepos;
     private TextView nrFollowers;
     private TextView nrFollowing;
+    private Button switchButton;
+
+    private String username;
 
     @Nullable
     @Override
@@ -36,16 +40,22 @@ public class TabInfoFragment extends Fragment {
         nrRepos = root.findViewById(R.id.number_of_repos_textView);
         nrFollowers = root.findViewById(R.id.number_of_followers_textView);
         nrFollowing = root.findViewById(R.id.number_of_following_textView);
+        switchButton = root.findViewById(R.id.switchButton);
 
         viewModel.getSearchedUser().observe(getViewLifecycleOwner(), user -> {
             if (user != null) {
                 usernameView.setText(user.getName());
+                username = user.getLogin();
                 nrRepos.setText(user.getNumberOfRepos() + " Repos");
                 nrFollowers.setText(user.getNumberOfFollowers() + " Followers");
                 nrFollowing.setText(user.getFollowing() + " Following");
                 Glide.with(this).load(user.getAvatar_url()).into(avatarView);
                 viewModel.searchRepos(user.getLogin());
             }
+        });
+
+        switchButton.setOnClickListener(v -> {
+            //TODO finish button that adds favorite user
         });
 
         return root;

@@ -7,19 +7,19 @@ import androidx.lifecycle.LiveData;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseUser;
 
-public class UserRep {
+public class UserRepo {
     private final UserData currentUser;
     private final Application app;
-    private static UserRep instance;
+    private static UserRepo instance;
 
-    private UserRep(Application app) {
+    private UserRepo(Application app) {
         this.app = app;
         currentUser = new UserData();
     }
 
-    public static synchronized UserRep getInstance(Application app) {
+    public static synchronized UserRepo getInstance(Application app) {
         if (instance == null) {
-            instance = new UserRep(app);
+            instance = new UserRepo(app);
         }
         return instance;
     }

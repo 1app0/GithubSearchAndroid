@@ -31,9 +31,7 @@ public class MainActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
         //observe the currently logged in user
         viewModel.getCurrentUser().observe(this, user -> {
-            if (user != null) {
-                Toast.makeText(this, "Hello " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-            } else {
+            if (user == null) {
                 startActivity(new Intent(this, LoginActivity.class));
                 finish();
             }

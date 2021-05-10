@@ -5,18 +5,18 @@ import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.githubsearchandroid.data.logindata.UserRep;
+import com.example.githubsearchandroid.data.logindata.UserRepo;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginViewModel extends AndroidViewModel {
-    private final UserRep userRep;
+    private final UserRepo userRepo;
 
     public LoginViewModel(Application app) {
         super(app);
-        userRep = UserRep.getInstance(app);
+        userRepo = UserRepo.getInstance(app);
     }
 
     public LiveData<FirebaseUser> getCurrentUser() {
-        return userRep.getCurrentUser();
+        return userRepo.getCurrentUser();
     }
 }
