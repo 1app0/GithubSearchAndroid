@@ -67,6 +67,7 @@ dependencies {
 
     //firebase realtime database
     implementation 'com.google.firebase:firebase-database'
+    implementation 'com.firebaseui:firebase-ui-database:6.2.1'
 
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
@@ -77,4 +78,7 @@ dependencies {
 
     //MP android charts
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //Recycle View
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
 }
