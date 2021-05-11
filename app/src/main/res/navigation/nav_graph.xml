@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/navigation_favourite"
-        android:name="com.example.githubsearchandroid.ui.favourite.FavouriteFragment"
+        android:name="com.example.githubsearchandroid.ui.favourite.FavoriteFragment"
         android:label="@string/title_favourite"
         tools:layout="@layout/fragment_favourite"/>
 

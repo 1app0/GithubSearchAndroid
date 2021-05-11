@@ -10,19 +10,17 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
-public class FavLiveData extends LiveData<List<String>> {
-    private List<String> favListSnapshot;
+public class FavLiveData extends LiveData<List<FavUser>> {
+    private List<FavUser> favList;
     private DatabaseReference dbRef;
     private final ValueEventListener listener = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot snapshot) {
-            if (snapshot.exists()) {
-                favListSnapshot.clear();
+            favList.clear();
 
-                for (DataSnapshot snap: snapshot.getChildren()) {
-                    String favUserSnapshot = snap.getValue(String.class);
-                    favListSnapshot.add(favUserSnapshot);
-                }
+            for (DataSnapshot snap: snapshot.getChildren()) {
+                FavUser favUser = snap.getValue(FavUser.class);
+                favList.add(favUser);
             }
         }
 

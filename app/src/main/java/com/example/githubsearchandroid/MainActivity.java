@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+        //init the db ref so that other classes don't need to do it
+        viewModel.init();
         //observe the currently logged in user
         viewModel.getCurrentUser().observe(this, user -> {
             if (user == null) {

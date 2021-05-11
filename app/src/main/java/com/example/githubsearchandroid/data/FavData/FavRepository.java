@@ -10,7 +10,6 @@ import java.util.List;
 public class FavRepository {
     private static FavRepository instance;
     private DatabaseReference myRef;
-    private FavLiveData favListLiveData;
 
     public static synchronized FavRepository getFavRepository() {
         if (instance == null) {
@@ -22,14 +21,13 @@ public class FavRepository {
 
     public void init(String userId) {
         myRef = FirebaseDatabase.getInstance().getReference().child("users").child(userId);
-        favListLiveData = new FavLiveData(myRef);
     }
 
-    public void saveFavList(List<String> favList) {
-        myRef.setValue(favList);
+    public DatabaseReference getDbRef() {
+        return myRef;
     }
 
-    public FavLiveData getFavListLiveData() {
-        return favListLiveData;
+    public void saveFav(FavUser favUser) {
+        myRef.push().setValue(favUser);
     }
 }

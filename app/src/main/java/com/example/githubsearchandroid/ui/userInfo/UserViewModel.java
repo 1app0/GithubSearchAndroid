@@ -6,9 +6,14 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.githubsearchandroid.data.FavData.FavRepository;
+import com.example.githubsearchandroid.data.FavData.FavUser;
 import com.example.githubsearchandroid.data.GithubRepository;
 import com.example.githubsearchandroid.data.githubapi.githubdata.GithubRepo;
 import com.example.githubsearchandroid.data.githubapi.githubdata.GithubUser;
+import com.example.githubsearchandroid.data.logindata.UserRepo;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+
 
 import java.util.List;
 
@@ -17,6 +22,7 @@ public class UserViewModel extends AndroidViewModel {
     private List<GithubRepo> githubRepos;
     private FavRepository favRepo;
 
+
     public UserViewModel(Application app) {
         super(app);
         repo = GithubRepository.getInstance();
@@ -24,12 +30,13 @@ public class UserViewModel extends AndroidViewModel {
         favRepo = FavRepository.getFavRepository();
     }
 
-    public void init() {
-        //TODO figure out if the hassle to pass userid from mainactivity is worth it, or just use userRepo directly
+    public void saveFavUser(String username) {
+        FavUser favUser = new FavUser(username);
+        favRepo.saveFav(favUser);
     }
 
-    public void saveFavUser(List<String> favList) {
-        favRepo.saveFavList(favList);
+    public DatabaseReference getDbRef() {
+        return favRepo.getDbRef();
     }
 
     public LiveData<GithubUser> getSearchedUser() {
