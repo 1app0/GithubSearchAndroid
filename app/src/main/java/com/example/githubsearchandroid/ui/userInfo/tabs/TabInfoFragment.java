@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +38,9 @@ import com.google.firebase.database.ValueEventListener;
     private Button switchButton;
 
     private String username;
+    private Boolean isFavorite;
+
+    private DatabaseReference dbRef;
 
     @Nullable
     @Override
@@ -52,7 +56,7 @@ import com.google.firebase.database.ValueEventListener;
         nrFollowing = root.findViewById(R.id.number_of_following_textView);
         switchButton = root.findViewById(R.id.switchButton);
 
-
+        dbRef = viewModel.getDbRef();
 
         viewModel.getSearchedUser().observe(getViewLifecycleOwner(), user -> {
             if (user != null) {
@@ -64,11 +68,12 @@ import com.google.firebase.database.ValueEventListener;
                 Glide.with(this).load(user.getAvatar_url()).into(avatarView);
                 viewModel.searchRepos(user.getLogin());
 
-                viewModel.getDbRef().orderByChild("body").equalTo(username)
+                dbRef.orderByChild("body").equalTo(username)
                         .addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 if (snapshot.exists()) {
+                                    isFavorite = true;
                                     switchButton.setText("Unfavorite");
                                 }
                             }
@@ -81,9 +86,30 @@ import com.google.firebase.database.ValueEventListener;
         });
 
         switchButton.setOnClickListener(v -> {
-            viewModel.saveFavUser(username);
-            switchButton.setText("Unfavorite");
-            //TODO actually remove someone from favorite list
+            if (isFavorite) {
+                Query userQuery = dbRef.orderByChild("body").equalTo(username);
+                userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot snap: snapshot.getChildren()) {
+                            snap.getRef().removeValue();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+
+                Toast.makeText(getContext(), username + " has been removed from favorites", Toast.LENGTH_SHORT).show();
+                isFavorite = false;
+                switchButton.setText("Favorite");
+            } else {
+                viewModel.saveFavUser(username);
+                Toast.makeText(getContext(), username + " has been added to favorites", Toast.LENGTH_SHORT).show();
+                isFavorite = true;
+                switchButton.setText("Unfavorite");
+            }
         });
 
         return root;
