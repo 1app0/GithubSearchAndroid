@@ -12,6 +12,8 @@ import com.example.githubsearchandroid.data.githubapi.githubresponse.GithubRespo
 import com.example.githubsearchandroid.data.githubapi.githubdata.GithubUser;
 import com.example.githubsearchandroid.data.githubapi.ServiceGenerator;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,17 +49,13 @@ public class GithubRepository {
         return searchedRepos;
     }
 
-    public List<GithubRepo> getGithubReposList() {
-        return githubReposList;
-    }
-
     public void searchForRepos(String username) {
         GithubApi githubApi = ServiceGenerator.getGithubApi();
         Call<List<GithubResponseRepos>> call = githubApi.getReposForUser(username);
         call.enqueue(new Callback<List<GithubResponseRepos>>() {
             @Override
-            public void onResponse(Call<List<GithubResponseRepos>> call, Response<List<GithubResponseRepos>> response) {
-                if (response.isSuccessful()) { ;
+            public void onResponse(@NotNull Call<List<GithubResponseRepos>> call, @NotNull Response<List<GithubResponseRepos>> response) {
+                if (response.isSuccessful()) {
                     githubReposList= new ArrayList<>();
 
                     for (GithubResponseRepos repoResponse : response.body()) {
@@ -69,7 +67,7 @@ public class GithubRepository {
             }
 
             @Override
-            public void onFailure(Call<List<GithubResponseRepos>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<GithubResponseRepos>> call, @NotNull Throwable t) {
                 Log.i("Retrofit", t.getMessage());
             }
         });
@@ -80,14 +78,14 @@ public class GithubRepository {
         Call<GithubResponseUser> call = githubApi.getUser(username);
         call.enqueue(new Callback<GithubResponseUser>() {
             @Override
-            public void onResponse(Call<GithubResponseUser> call, Response<GithubResponseUser> response) {
+            public void onResponse(@NotNull Call<GithubResponseUser> call, @NotNull Response<GithubResponseUser> response) {
                 if (response.isSuccessful()) {
                     searchedUser.postValue(response.body().getGithubUser());
                 }
             }
 
             @Override
-            public void onFailure(Call<GithubResponseUser> call, Throwable t) {
+            public void onFailure(@NotNull Call<GithubResponseUser> call, @NotNull Throwable t) {
                 Log.i("Retrofit", t.getMessage());
             }
         });

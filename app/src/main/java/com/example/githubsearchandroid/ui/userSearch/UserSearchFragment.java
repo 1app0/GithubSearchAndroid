@@ -20,7 +20,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.githubsearchandroid.R;
 
 public class UserSearchFragment extends Fragment {
-    private UserSearchViewModel viewModel;
     private EditText searchField;
     private Button searchUser;
 
@@ -29,7 +28,6 @@ public class UserSearchFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(this).get(UserSearchViewModel.class);
         View root = inflater.inflate(R.layout.fragment_user_search, container, false);
 
         searchUser = root.findViewById(R.id.search_user);

@@ -19,14 +19,12 @@ import java.util.List;
 
 public class UserViewModel extends AndroidViewModel {
     private GithubRepository repo;
-    private List<GithubRepo> githubRepos;
     private FavRepository favRepo;
 
 
     public UserViewModel(Application app) {
         super(app);
         repo = GithubRepository.getInstance();
-        githubRepos = repo.getGithubReposList();
         favRepo = FavRepository.getFavRepository();
     }
 

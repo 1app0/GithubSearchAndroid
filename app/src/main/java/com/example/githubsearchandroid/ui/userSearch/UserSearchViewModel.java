@@ -7,17 +7,6 @@ import com.example.githubsearchandroid.data.GithubRepository;
 import com.example.githubsearchandroid.data.githubapi.githubdata.GithubUser;
 
 public class UserSearchViewModel extends ViewModel {
-    private GithubRepository repo;
-
-    public UserSearchViewModel() {
-        repo = GithubRepository.getInstance();
-    }
-
-    public LiveData<GithubUser> getSearchedUser() {
-        return repo.getSearchedUser();
-    }
-
-    public void searchForUser(String username) {
-        repo.searchForUser(username);
-    }
+    //viewModel not needed in current version, remains here for the future
+    public UserSearchViewModel() {}
 }

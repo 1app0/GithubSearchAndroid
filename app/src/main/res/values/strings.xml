@@ -3,7 +3,7 @@
     bottom navigation menu
     <string name="title_home">Home</string>
     <string name="title_userInfo">User Information</string>
-    <string name="title_favourite">Favourite</string>
+    <string name="title_favourite">Favourites</string>
     <string name="title_settings">Settings</string>
     login fragment
     <string name="login_login">Log in</string>
@@ -18,7 +18,7 @@
     <string name="tab_title_language">Language</string>
     <string name="tab_title_hype">Most used</string>
     <string name="tab_title_stars">Stars</string>
-    user info
+    tab user info
     <string name="tab_user_info_welcome">Welcome</string>
     <string name="tab_user_info_user_avatarImg">User Avatar</string>
     <string name="tab_user_info_user_number_of_reposImg">Number of repos</string>
@@ -26,7 +26,11 @@
     <string name="tab_user_info_user_followingImg">Following number</string>
     <string name="tab_user_info_favorite">Favorite</string>
     <string name="tab_user_info_unfavorite">Unfavorite</string>
-    user contact
+    tab user info set text values
+    <string name="tab_user_info_setText_repos">Repos</string>
+    <string name="tab_user_info_setText_followers">Followers</string>
+    <string name="tab_user_info_setText_following">Following</string>
+    tab user contact
     <string name="tab_user_contactImg">User Avatar</string>
     <string name="tab_user_contact_blogImg">User blog</string>
     <string name="tab_user_contact_locationImg">User location</string>

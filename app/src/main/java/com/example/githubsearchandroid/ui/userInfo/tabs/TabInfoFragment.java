@@ -1,5 +1,6 @@
     package com.example.githubsearchandroid.ui.userInfo.tabs;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,7 +39,7 @@ import com.google.firebase.database.ValueEventListener;
     private Button switchButton;
 
     private String searchedGithubUsername;
-    private String username;
+    private final String username;
     private Boolean isFavorite;
 
     private DatabaseReference dbRef;
@@ -47,6 +48,7 @@ import com.google.firebase.database.ValueEventListener;
         this.username = username;
     }
 
+    @SuppressLint("SetTextI18n")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -71,9 +73,9 @@ import com.google.firebase.database.ValueEventListener;
             if (user != null) {
                 searchedGithubUsername = user.getLogin();
                 usernameView.setText(user.getName());
-                nrRepos.setText(user.getNumberOfRepos() + " Repos");
-                nrFollowers.setText(user.getNumberOfFollowers() + " Followers");
-                nrFollowing.setText(user.getFollowing() + " Following");
+                nrRepos.setText(user.getNumberOfRepos() + " " + getString(R.string.tab_user_info_setText_repos));
+                nrFollowers.setText(user.getNumberOfFollowers() + " " + getString(R.string.tab_user_info_setText_followers));
+                nrFollowing.setText(user.getFollowing() + " " + getString(R.string.tab_user_info_setText_following));
                 Glide.with(this).load(user.getAvatar_url()).into(avatarView);
                 viewModel.searchRepos(user.getLogin());
 
@@ -83,7 +85,7 @@ import com.google.firebase.database.ValueEventListener;
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 if (snapshot.exists()) {
                                     isFavorite = true;
-                                    switchButton.setText("Unfavorite");
+                                    switchButton.setText(R.string.tab_user_info_unfavorite);
                                 }
                             }
 
@@ -112,12 +114,12 @@ import com.google.firebase.database.ValueEventListener;
 
                 Toast.makeText(getContext(), searchedGithubUsername + " has been removed from favorites", Toast.LENGTH_SHORT).show();
                 isFavorite = false;
-                switchButton.setText("Favorite");
+                switchButton.setText(R.string.tab_user_info_favorite);
             } else {
                 viewModel.saveFavUser(searchedGithubUsername);
                 Toast.makeText(getContext(), searchedGithubUsername + " has been added to favorites", Toast.LENGTH_SHORT).show();
                 isFavorite = true;
-                switchButton.setText("Unfavorite");
+                switchButton.setText(R.string.tab_user_info_unfavorite);
             }
         });
 
