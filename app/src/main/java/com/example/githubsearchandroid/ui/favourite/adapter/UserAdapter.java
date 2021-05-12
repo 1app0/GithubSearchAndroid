@@ -1,4 +1,4 @@
-package com.example.githubsearchandroid.ui.favourite.adapter;
+ package com.example.githubsearchandroid.ui.favourite.adapter;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,11 +8,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.githubsearchandroid.R;
 import com.example.githubsearchandroid.data.FavData.FavRepository;
 import com.example.githubsearchandroid.data.FavData.FavUser;
+import com.example.githubsearchandroid.ui.favourite.FavoriteFragmentDirections;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
@@ -55,7 +58,10 @@ public class UserAdapter extends FirebaseRecyclerAdapter<FavUser, UserAdapter.Vi
             favUsername = itemView.findViewById(R.id.favoriteName_textView);
             favButton = itemView.findViewById(R.id.favoriteButton);
 
-            favButton.setOnClickListener(v -> Log.i("favUserSearch", String.valueOf(favUsername.getText())));
+            favButton.setOnClickListener(v -> {
+                NavDirections action = FavoriteFragmentDirections.actionNavigationFavouriteToNavigationUserInfo(String.valueOf(favUsername.getText()));
+                Navigation.findNavController(v).navigate(action);
+            });
         }
     }
 }

@@ -31,4 +31,6 @@
     <string name="tab_user_contact_blogImg">User blog</string>
     <string name="tab_user_contact_locationImg">User location</string>
     <string name="tab_user_contact_companyImg">User company</string>
+    favorite fragment
+    <string name="favorite_button">Search</string>
 </resources>

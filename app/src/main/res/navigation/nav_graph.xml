@@ -23,13 +23,25 @@
         android:id="@+id/navigation_userInfo"
         android:name="com.example.githubsearchandroid.ui.userInfo.UserFragment"
         android:label="@string/title_userInfo"
-        tools:layout="@layout/fragment_user" />
+        tools:layout="@layout/fragment_user" >
+        <argument
+            android:name="username"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_favourite"
         android:name="com.example.githubsearchandroid.ui.favourite.FavoriteFragment"
         android:label="@string/title_favourite"
-        tools:layout="@layout/fragment_favourite"/>
+        tools:layout="@layout/fragment_favourite">
+        <action
+            android:id="@+id/action_navigation_favourite_to_navigation_userInfo"
+            app:destination="@id/navigation_userInfo"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
 
     <fragment
         android:id="@+id/toolbar_settings"

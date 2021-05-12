@@ -37,9 +37,8 @@ public class UserSearchFragment extends Fragment {
 
         searchUser.setOnClickListener(v -> {
             username = searchField.getText().toString();
-            viewModel.searchForUser(username);
 
-            NavDirections action = UserSearchFragmentDirections.actionNavigationHomeToNavigationUserInfo();
+            NavDirections action = UserSearchFragmentDirections.actionNavigationHomeToNavigationUserInfo(username);
             Navigation.findNavController(v).navigate(action);
 
             searchField.setText("");

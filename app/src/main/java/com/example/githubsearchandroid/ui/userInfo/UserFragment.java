@@ -42,7 +42,10 @@ public class UserFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        adapter = new ViewAdapter(this);
+        UserFragmentArgs args = UserFragmentArgs.fromBundle(getArguments());
+        String username = args.getUsername();
+
+        adapter = new ViewAdapter(this, username);
         viewPager2 = view.findViewById(R.id.view_pager);
         viewPager2.setAdapter(adapter);
 

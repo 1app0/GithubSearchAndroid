@@ -50,4 +50,8 @@ public class UserViewModel extends AndroidViewModel {
     public void searchRepos(String username) {
         repo.searchForRepos(username);
     }
+
+    public void searchUser(String username) {
+        repo.searchForUser(username);
+    }
 }

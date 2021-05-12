@@ -37,10 +37,15 @@ import com.google.firebase.database.ValueEventListener;
     private TextView nrFollowing;
     private Button switchButton;
 
+    private String searchedGithubUsername;
     private String username;
     private Boolean isFavorite;
 
     private DatabaseReference dbRef;
+
+    public TabInfoFragment(String username) {
+        this.username = username;
+    }
 
     @Nullable
     @Override
@@ -58,9 +63,13 @@ import com.google.firebase.database.ValueEventListener;
 
         dbRef = viewModel.getDbRef();
 
+        isFavorite = false;
+
+        viewModel.searchUser(username);
+
         viewModel.getSearchedUser().observe(getViewLifecycleOwner(), user -> {
             if (user != null) {
-                username = user.getLogin();
+                searchedGithubUsername = user.getLogin();
                 usernameView.setText(user.getName());
                 nrRepos.setText(user.getNumberOfRepos() + " Repos");
                 nrFollowers.setText(user.getNumberOfFollowers() + " Followers");
@@ -68,7 +77,7 @@ import com.google.firebase.database.ValueEventListener;
                 Glide.with(this).load(user.getAvatar_url()).into(avatarView);
                 viewModel.searchRepos(user.getLogin());
 
-                dbRef.orderByChild("body").equalTo(username)
+                dbRef.orderByChild("body").equalTo(searchedGithubUsername)
                         .addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -87,7 +96,7 @@ import com.google.firebase.database.ValueEventListener;
 
         switchButton.setOnClickListener(v -> {
             if (isFavorite) {
-                Query userQuery = dbRef.orderByChild("body").equalTo(username);
+                Query userQuery = dbRef.orderByChild("body").equalTo(searchedGithubUsername);
                 userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -101,12 +110,12 @@ import com.google.firebase.database.ValueEventListener;
                     }
                 });
 
-                Toast.makeText(getContext(), username + " has been removed from favorites", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), searchedGithubUsername + " has been removed from favorites", Toast.LENGTH_SHORT).show();
                 isFavorite = false;
                 switchButton.setText("Favorite");
             } else {
-                viewModel.saveFavUser(username);
-                Toast.makeText(getContext(), username + " has been added to favorites", Toast.LENGTH_SHORT).show();
+                viewModel.saveFavUser(searchedGithubUsername);
+                Toast.makeText(getContext(), searchedGithubUsername + " has been added to favorites", Toast.LENGTH_SHORT).show();
                 isFavorite = true;
                 switchButton.setText("Unfavorite");
             }
