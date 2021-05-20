@@ -41,7 +41,6 @@ public class TabMostUsedLangFragment extends Fragment {
 
         pieChart = root.findViewById(R.id.tab_user_languages_piechart);
         viewModel = new ViewModelProvider(this).get(UserViewModel.class);
-        Log.i("heello", "hi");
         viewModel.getSearchedRepos().observe(getViewLifecycleOwner(), this::setupPieChart);
 
         return root;
@@ -52,7 +51,7 @@ public class TabMostUsedLangFragment extends Fragment {
 
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
 
-        Map<String, Integer> map = new HashMap<String, Integer>();
+        Map<String, Integer> map = new HashMap<>();
 
         for (GithubRepo repo : githubRepos) {
             String language = repo.getLanguage();

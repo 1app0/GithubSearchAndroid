@@ -57,10 +57,10 @@ public class UserFragment extends Fragment {
                     tab.setText(R.string.tab_title_user);
                     break;
                 case 1:
-                    tab.setText(R.string.tab_title_language);
+                    tab.setText(R.string.tab_title_contact);
                     break;
                 case 2:
-                    tab.setText(R.string.tab_title_hype);
+                    tab.setText(R.string.tab_title_languages);
                     break;
                 case 3:
                     tab.setText(R.string.tab_title_stars);

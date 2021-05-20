@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 startActivity(new Intent(this, MainActivity.class));
             } else {
-                Toast.makeText(this, "FUCK", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "bruh", Toast.LENGTH_LONG).show();
             }
         }
     }
