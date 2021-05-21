@@ -54,3 +54,4 @@ Must have requirements:
 Should have requirements:
 1. Star/unstar favourite users.
 2. Favourite users should be saved in a remote database.
+ https://youtu.be/n6o5_44vLm8
